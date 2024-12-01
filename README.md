@@ -1,3 +1,47 @@
+# Task Manager Application
+
+This project is a **Task Manager Application**, designed to help users manage their daily tasks efficiently. The application allows users to create, view, update, and delete tasks with additional features like user authentication, task categorization, and task due date management. The project was initially built using **React.js** and has been migrated to **Vite** with **TypeScript** for better performance, developer experience, and maintainability.
+
+---
+
+## Features
+
+### User Authentication:
+- Supports user registration and login.
+- Authenticates users using Firebase Authentication.
+
+### Task Management:
+- Add tasks with details such as title, description, and due date.
+- Mark tasks as completed or undo completion.
+- Delete tasks individually.
+
+### Task Organization:
+- Segregates tasks into "Active" and "Completed" categories.
+- Allows users to toggle visibility of completed tasks.
+
+### Account Management:
+- Users can delete their accounts, which removes all associated tasks from Firebase.
+
+### User Interface:
+- Responsive and clean UI.
+- Uses Material Icons for visual appeal.
+
+---
+
+## Technology Stack
+
+### Frontend:
+- **React.js**
+- **TypeScript**
+- **CSS** for custom styling
+
+### Build Tool:
+- **Vite** for faster builds and hot module replacement.
+
+### Backend:
+- **Firebase Realtime Database** for task storage.
+- **Firebase Authentication** for user authentication.
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
