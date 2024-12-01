@@ -7,19 +7,19 @@ import {
   auth,
   logoutUser,
   removeUserTasks,
-} from "./firebase"; // Import Firebase services
+} from "./firebase";
 import { User } from "firebase/auth";
 import TaskItem from "./components/TaskItem";
 import TaskForm from "./components/TaskForm";
-import Login from "./components/Login"; // Import Login component
-import Register from "./components/Register"; // Import Register component
+import Login from "./components/Login";
+import Register from "./components/Register";
 import "./App.css";
 
 interface Task {
-  id: string | number;
+  id: string;
   title: string;
   description?: string;
-  dueDate?: string;
+  dueDate?: string; // Ensure dueDate is always string or undefined
   createdAt?: string;
   completed: boolean;
   updatedAt?: number;
@@ -33,13 +33,8 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
-      if (currentUser) {
-        setUser(currentUser);
-      } else {
-        setUser(null);
-      }
+      setUser(currentUser);
     });
-
     return () => unsubscribe();
   }, []);
 
@@ -58,11 +53,10 @@ const App: React.FC = () => {
         tasksData.sort((a, b) => {
           const dateA = a.dueDate || a.createdAt;
           const dateB = b.dueDate || b.createdAt;
-          return new Date(dateA).getTime() - new Date(dateB).getTime();
+          return new Date(dateA!).getTime() - new Date(dateB!).getTime();
         });
         setTasks(tasksData);
       } else {
-        console.log("No data available");
         setTasks([]);
       }
     };
@@ -85,9 +79,9 @@ const App: React.FC = () => {
     try {
       if (!user) return;
 
-      const taskId = Date.now();
+      const taskId = Date.now().toString();
       const taskRef = ref(db, `tasks/${user.uid}/${taskId}`);
-      const newTask = { id: taskId, ...task };
+      const newTask: Task = { id: taskId, ...task };
       await set(taskRef, newTask);
 
       setTasks((prevTasks) => {
@@ -95,7 +89,7 @@ const App: React.FC = () => {
         updatedTasks.sort((a, b) => {
           const dateA = a.dueDate || a.createdAt;
           const dateB = b.dueDate || b.createdAt;
-          return new Date(dateA).getTime() - new Date(dateB).getTime();
+          return new Date(dateA!).getTime() - new Date(dateB!).getTime();
         });
         return updatedTasks;
       });
@@ -104,7 +98,7 @@ const App: React.FC = () => {
     }
   };
 
-  const deleteTask = async (id: string | number) => {
+  const deleteTask = async (id: string) => {
     try {
       if (!user) return;
 
@@ -116,7 +110,7 @@ const App: React.FC = () => {
     }
   };
 
-  const toggleTaskCompletion = async (id: string | number) => {
+  const toggleTaskCompletion = async (id: string) => {
     const task = tasks.find((task) => task.id === id);
     if (task) {
       const updatedTask = {
@@ -126,22 +120,11 @@ const App: React.FC = () => {
       };
       const taskRef = ref(db, `tasks/${user.uid}/${id}`);
       await set(taskRef, updatedTask);
-      setTasks((prevTasks) => {
-        const updatedTasks = prevTasks.map((t) =>
-          t.id === id ? updatedTask : t
-        );
-        updatedTasks.sort((a, b) => {
-          const dateA = a.dueDate || a.createdAt;
-          const dateB = b.dueDate || b.createdAt;
-          return new Date(dateA).getTime() - new Date(dateB).getTime();
-        });
-        return updatedTasks;
-      });
-    }
-  };
 
-  const handleAuthSuccess = () => {
-    setUser(auth.currentUser);
+      setTasks((prevTasks) =>
+        prevTasks.map((t) => (t.id === id ? updatedTask : t))
+      );
+    }
   };
 
   const handleToggleCompleted = () => {
@@ -195,12 +178,14 @@ const App: React.FC = () => {
             <div className="task-section completed-tasks">
               <h2>
                 Completed
-                <button onClick={handleToggleCompleted} className="toggle-completed-btn">
-                <span className="material-icons">
-                 {showCompleted ? "expand_more" : "chevron_right"}
-                 </span>
-</button>
-
+                <button
+                  onClick={handleToggleCompleted}
+                  className="toggle-completed-btn"
+                >
+                  <span className="material-icons">
+                    {showCompleted ? "expand_more" : "chevron_right"}
+                  </span>
+                </button>
               </h2>
               {showCompleted && (
                 <div className="task-list">
@@ -221,9 +206,9 @@ const App: React.FC = () => {
           </button>
         </>
       ) : isLogin ? (
-        <Login onAuthSuccess={handleAuthSuccess} setIsLogin={setIsLogin} />
+        <Login onAuthSuccess={() => setUser(auth.currentUser)} setIsLogin={setIsLogin} />
       ) : (
-        <Register onAuthSuccess={handleAuthSuccess} setIsLogin={setIsLogin} />
+        <Register onAuthSuccess={() => setUser(auth.currentUser)} setIsLogin={setIsLogin} />
       )}
     </div>
   );

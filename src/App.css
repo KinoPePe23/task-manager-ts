@@ -263,7 +263,7 @@ form button:hover {
 }
 
 /* Media Query for smaller screens */
-@media (max-width: 600px) {
+@media (max-width: 6¨00px) {
   .task-item {
     flex-direction: column;
     align-items: flex-start;
