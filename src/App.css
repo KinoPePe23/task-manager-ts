@@ -1,0 +1,258 @@
+/* General body styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #eef2f3;
+  color: #000; /* Default text color set to black */
+}
+
+/* App container styling */
+.app {
+  padding: 20px;
+  max-width: 600px;
+  margin: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Task manager header styling */
+h1 {
+  text-align: center;
+  color: #4caf50;
+}
+
+/* User info section */
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.user-info span {
+  font-size: 16px;
+}
+
+.logout-icon {
+  background-color: transparent; /* Removed background color */
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red; /* Logout icon in red */
+  margin-left: auto; /* Align to the far right */
+}
+
+/* Task section styling */
+.task-section {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.active-tasks {
+  background-color: #e8f5e9;
+}
+
+.completed-tasks {
+  background-color: #f5f5f5;
+}
+
+/* Task section headers */
+.task-section h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Task item styling */
+.task-item {
+  display: flex;
+  align-items: flex-start;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: box-shadow 0.3s;
+}
+
+.task-item:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Task text container styling */
+.task-text-container {
+  flex: 1;
+  padding-right: 10px;
+  margin-bottom: 5px;
+}
+
+.task-text {
+  font-size: 16px;
+  cursor: pointer;
+  color: #000; /* Ensure task title is black */
+}
+
+/* Add strikethrough effect to completed tasks */
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: #888; /* Make completed task text gray */
+}
+
+.task-description {
+  font-size: 14px;
+  color: #555;
+  display: block;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+/* Due date styling */
+.task-due-date {
+  font-size: 12px;
+  color: #000; /* Ensure due date is black */
+}
+
+.task-due-date span.material-icons {
+  color: #000; /* Ensure time/date icons are black */
+}
+
+/* Task actions section */
+.task-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.task-actions button {
+  margin-left: 10px;
+  padding: 8px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Task action icons */
+.task-actions .toggle-btn.complete-btn span {
+  color: green; /* Completion icon in green */
+}
+
+.task-actions .toggle-btn.undo-btn span {
+  color: green; /* Undo icon in green */
+}
+
+.task-actions .delete-btn span {
+  color: orange; /* Delete icon in orange */
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+form input,
+form textarea {
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #000; /* Input text should be black */
+}
+
+form button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+/* Delete Account Button */
+.delete-account-btn {
+  background-color: #ff4d4d; /* Red button for danger */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin-top: 20px;
+}
+
+.delete-account-btn:hover {
+  background-color: #e60000;
+}
+
+/* Toggle button for completed tasks */
+.toggle-completed-btn {
+  background-color: transparent; /* Removed background color to make it transparent */
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000; /* Arrow icon in black */
+}
+
+.toggle-completed-btn:hover {
+  background-color: transparent; /* No change on hover, remains transparent */
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 600px) {
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-text {
+    font-size: 14px;
+  }
+
+  .task-description {
+    font-size: 12px;
+  }
+
+  .task-actions button {
+    margin-left: 5px;
+    padding: 6px;
+  }
+
+  /* Modal styling on smaller screens */
+  .modal-content {
+    width: 80%; /* Modal takes 80% of the screen width on mobile */
+    max-width: 600px; /* Further reduce max-width on smaller screens */
+  }
+}

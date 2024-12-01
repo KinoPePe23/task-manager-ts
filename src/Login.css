@@ -1,0 +1,109 @@
+/* Style for the entire login page */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #f7f7f7, #ffffff);
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Styling for the login form */
+.login-form {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  margin: 20px;
+}
+
+/* Styling for the form title */
+.form-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: bold; /* Adds more emphasis */
+}
+
+/* Styling for form fields */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  color: #555;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  color: #000; /* Ensure text inside input fields is black */
+  background-color: #fff; /* Ensure input field background is white */
+}
+
+input::placeholder {
+  color: #aaa; /* Placeholder text color for better contrast */
+}
+
+input:focus {
+  border-color: #007BFF; /* Highlighted border on focus */
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5); /* Subtle focus effect */
+}
+
+/* Styling for the submit button */
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #45a049; /* Match app's primary green theme */
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: green;
+}
+
+/* Styling for error messages */
+.error-message {
+  color: red;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold; /* Highlight error messages */
+}
+
+/* Styling for the switch to register link */
+.switch-to-register {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.go-to-register {
+  background: none;
+  border: none;
+  color: #45a049;
+  text-decoration: underline;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.go-to-register:hover {
+  color: darkgreen;
+  background: none;
+}
