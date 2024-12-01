@@ -7,8 +7,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #eef2f3;
-  color: #000; /* Default text color set to black */
+  background-color: #eef2f3; /* Soft background color */
 }
 
 /* App container styling */
@@ -17,7 +16,7 @@ body {
   max-width: 600px;
   margin: 20px;
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: #ffffff; /* White background for the app */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
   box-sizing: border-box;
@@ -26,32 +25,7 @@ body {
 /* Task manager header styling */
 h1 {
   text-align: center;
-  color: #4caf50;
-}
-
-/* User info section */
-.user-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px 0;
-}
-
-.user-info span {
-  font-size: 16px;
-}
-
-.logout-icon {
-  background-color: transparent; /* Removed background color */
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: red; /* Logout icon in red */
-  margin-left: auto; /* Align to the far right */
+  color: #4caf50; /* Green color for header */
 }
 
 /* Task section styling */
@@ -60,21 +34,22 @@ h1 {
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  color:black;
 }
 
 .active-tasks {
-  background-color: #e8f5e9;
+  background-color: #e8f5e9; /* Light green for active tasks */
 }
 
 .completed-tasks {
-  background-color: #f5f5f5;
+  background-color: #e8f5e9; /* Same light green for completed tasks */
 }
 
 /* Task section headers */
 .task-section h2 {
   font-size: 18px;
   margin-bottom: 10px;
-  color: #333;
+  color: #333; /* Darker text for headers */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -106,34 +81,21 @@ h1 {
 .task-text {
   font-size: 16px;
   cursor: pointer;
-  color: #000; /* Ensure task title is black */
 }
 
-/* Add strikethrough effect to completed tasks */
 .task-item.completed .task-text {
-  text-decoration: line-through;
-  color: #888; /* Make completed task text gray */
+  text-decoration: line-through; /* Strikethrough for completed tasks */
+  color: black; /* Black text color for readability */
 }
 
 .task-description {
   font-size: 14px;
-  color: #555;
+  color: #555; /* Dark gray for descriptions */
   display: block;
   margin-top: 5px;
   cursor: pointer;
 }
 
-/* Due date styling */
-.task-due-date {
-  font-size: 12px;
-  color: #000; /* Ensure due date is black */
-}
-
-.task-due-date span.material-icons {
-  color: #000; /* Ensure time/date icons are black */
-}
-
-/* Task actions section */
 .task-actions {
   display: flex;
   flex-direction: row;
@@ -146,22 +108,33 @@ h1 {
   padding: 8px;
   border: none;
   border-radius: 50%;
-  background-color: transparent;
+  background-color: transparent; /* Transparent background for icons */
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
+  outline: none; /* Remove focus outline */
+  box-shadow: none; /* Remove focus shadow */
 }
 
-/* Task action icons */
+/* Complete/Undo button styles */
 .task-actions .toggle-btn.complete-btn span {
-  color: green; /* Completion icon in green */
+  color: green; /* Green for completion */
 }
 
 .task-actions .toggle-btn.undo-btn span {
-  color: green; /* Undo icon in green */
+  color: green; /* Green for undo */
 }
 
+/* Delete button styles */
 .task-actions .delete-btn span {
-  color: orange; /* Delete icon in orange */
+  color: orange; /* Orange for delete */
+}
+
+/* Remove unwanted focus styles */
+.task-actions button:focus,
+.toggle-completed-btn:focus,
+span.material-icons:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 /* Form styling */
@@ -178,12 +151,18 @@ form textarea {
   font-size: 14px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  background-color: #fff;
-  color: #000; /* Input text should be black */
+  background-color: #fff; /* White background for inputs */
+  color: black; /* Black text for better visibility */
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #007BFF; /* Blue border on focus */
+  outline: none;
 }
 
 form button {
-  background-color: #4caf50;
+  background-color: #4caf50; /* Green background for save button */
   color: white;
   padding: 10px 15px;
   border: none;
@@ -193,41 +172,94 @@ form button {
 }
 
 form button:hover {
-  background-color: #45a049;
+  background-color: #45a049; /* Darker green on hover */
 }
 
-/* Delete Account Button */
-.delete-account-btn {
-  background-color: #ff4d4d; /* Red button for danger */
+/* Modal Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Dark background overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.modal-content h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.modal-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.modal-content button {
+  background-color: #4caf50;
   color: white;
-  border: none;
   padding: 10px 15px;
-  font-size: 16px;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
-  margin-top: 20px;
+  margin-top: 15px;
+  width: 100%;
 }
 
-.delete-account-btn:hover {
-  background-color: #e60000;
+.modal-content button:hover {
+  background-color: #45a049;
 }
 
 /* Toggle button for completed tasks */
 .toggle-completed-btn {
-  background-color: transparent; /* Removed background color to make it transparent */
+  background-color: transparent; /* Transparent background */
   border: none;
-  border-radius: 50%;
   cursor: pointer;
   padding: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000; /* Arrow icon in black */
 }
 
 .toggle-completed-btn:hover {
-  background-color: transparent; /* No change on hover, remains transparent */
+  background-color: transparent; /* No change on hover */
+}
+
+.toggle-completed-btn span {
+  font-size: 24px;
+  color: black; /* Black arrow icon */
+}
+
+/* Delete-account button */
+.delete-account-btn {
+  background-color: #ff4d4d; /* Red background for danger */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  display: block;
+  text-align: center;
+  width: 100%; /* Full width for consistency */
+}
+
+.delete-account-btn:hover {
+  background-color: #e60000; /* Darker red on hover */
 }
 
 /* Media Query for smaller screens */
@@ -250,9 +282,29 @@ form button:hover {
     padding: 6px;
   }
 
-  /* Modal styling on smaller screens */
   .modal-content {
-    width: 80%; /* Modal takes 80% of the screen width on mobile */
-    max-width: 600px; /* Further reduce max-width on smaller screens */
+    width: 80%; /* Modal takes 80% of screen width */
   }
 }
+
+/* User Info Styling */
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  color: #333;
+}
+
+.user-info button {
+  background-color: transparent; /* Transparent background for logout button */
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.user-info button span {
+  color: red; /* Red logout icon */
+  font-size: 24px;
+}
+

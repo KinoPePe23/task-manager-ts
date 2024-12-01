@@ -195,12 +195,12 @@ const App: React.FC = () => {
             <div className="task-section completed-tasks">
               <h2>
                 Completed
-                <button
-                  onClick={handleToggleCompleted}
-                  className="toggle-completed-btn"
-                >
-                  {showCompleted ? "▼" : "►"}
-                </button>
+                <button onClick={handleToggleCompleted} className="toggle-completed-btn">
+                <span className="material-icons">
+                 {showCompleted ? "expand_more" : "chevron_right"}
+                 </span>
+</button>
+
               </h2>
               {showCompleted && (
                 <div className="task-list">
